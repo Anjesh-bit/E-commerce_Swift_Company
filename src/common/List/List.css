@@ -1,0 +1,28 @@
+.app___list-wrapper {
+  background: #ddd0c8;
+  font-size: 0.9em;
+  padding: 2em 10em;
+  color: rgb(68, 67, 67);
+}
+
+.app___logo {
+  letter-spacing: 2px;
+  font-size: 1.7em;
+}
+
+.app___list-wrapper .list-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-inner-wrapper ul {
+  list-style: none;
+  display: flex;
+  column-gap: 4em;
+}
+
+.list-inner-wrapper ul li:hover {
+  cursor: pointer;
+  color: rgb(213, 50, 50);
+}
