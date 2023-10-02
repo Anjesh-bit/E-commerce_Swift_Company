@@ -1,14 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import {
+  getAllProductsReducer,
+  getSingleProductReducer,
+} from "./reducers/GetAllProductsReducer";
 
 //combine all the reducres at once
 const reducers = combineReducers({
-  
+  productsReducer: getAllProductsReducer,
+  singleProduct: getSingleProductReducer,
 });
 
 // initial state for the Store when component mounts
 const initialState = {
- 
+  productsReducer: { loading: false, allProducts: "" },
+  singleProduct: { loading: false, singleProduct: "" },
 };
 
 //middleware thunk for decreasing side effects and returning the action creators as a function instead of plain js object

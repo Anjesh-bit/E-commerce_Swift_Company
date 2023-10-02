@@ -1,0 +1,27 @@
+.app___detailed-wrapper {
+  padding: 2em 10em;
+}
+
+.detailed-inner-wrapper .detailed-title h1 {
+  font-size: 4em;
+}
+
+.detailed-inner-wrapper .detailed-title h4 {
+  font-size: 0.9em;
+}
+
+.slider-detailed-wrapper {
+  display: flex;
+  column-gap: 1em;
+}
+
+.slider-image-container {
+  height: 100vh;
+}
+
+.slider-image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}

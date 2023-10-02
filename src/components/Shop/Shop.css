@@ -1,40 +1,44 @@
 .app___shop-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 5em;
-  color: rgb(0, 0, 0);
-  background: #ddd0c8;
-  padding: 2em 25em;
-  height: 100vh;
+  padding: 2em 10em;
+  color: rgba(0, 0, 0);
 }
 
-.shop-text {
-  background-color: rgb(213, 50, 50);
-  opacity: 0.7;
-  text-align: center;
-  padding: 2em 2em 8em 2em;
-  border-radius: 30%;
+.app___shop-wrapper .shop-inner-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2em;
 }
 
-.shop-text h4 {
-  font-size: 0.9em;
-  letter-spacing: 1px;
+.shop-inner-wrapper .shop-card {
+  background: #ffff;
 }
 
-.shop-text h1 {
-  font-size: 3em;
+.shop-image-container {
+  height: 20em;
 }
 
-.shop-btn-wrapper .shop-btn {
-  background: rgb(68, 67, 67);
-  color: #ffff;
-  padding: 1em 2.5em;
-  border: none;
-  border-radius: 25px;
+.shop-image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-.shop-btn:hover {
+.shop-description {
+  padding: 1em;
+}
+
+.shop-description h4:not(:last-child) {
+  padding-bottom: 1em;
+}
+
+.shop-now-btn {
+  padding: 1em 4em;
+  background: transparent;
+  border: 1px solid rgb(68, 67, 67);
+}
+
+.shop-now-btn:hover {
   cursor: pointer;
   background: rgb(81, 81, 81);
+  color: #ffff;
 }

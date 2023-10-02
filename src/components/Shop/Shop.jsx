@@ -1,20 +1,42 @@
-import AppButton from "../../common/Button/AppButton";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsAction } from "../../actions/ProductActions";
 import "./Shop.css";
+import AppButton from "../../common/Button/AppButton";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
+  const dispatch = useDispatch();
+  const { loading, allProducts } = useSelector(
+    (state) => state.productsReducer
+  );
+
+  useEffect(() => {
+    dispatch(getAllProductsAction());
+  }, [dispatch]);
   return (
     <div className="app___shop-wrapper">
-      <div className="shop-text">
-        <h4>
-          <span>Your home is as unique as you are</span>
-        </h4>
-        <h1>
-          <span>Brightening homes with beautiful, durable products.</span>
-        </h1>
-      </div>
-      <div className="shop-btn-wrapper">
-        <AppButton btnClass="shop-btn" btnText="Shop Now" />
-      </div>
+      {loading && (
+        <div className="shop-inner-wrapper">
+          {allProducts.data.products.map((products, indexi) => (
+            <div key={`index${Math.random(indexi + 2)}`} className="shop-card">
+              <div className="shop-image-container">
+                <img
+                  src={products.images.find((image, indexj) => indexj === 0)}
+                  alt="mobile"
+                />
+              </div>
+              <div className="shop-description">
+                <h4>{products.title}</h4>
+                <h1>{`$${products.price}`}</h1>
+              </div>
+              <Link to={`/shop/${products.id}`}>
+                <AppButton btnText="Shop Now" btnClass="shop-now-btn" />
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
