@@ -1,4 +1,7 @@
 .app___detailed-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2em 10em;
 }
 
@@ -24,4 +27,14 @@
   width: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+.btn-addto-bag {
+  padding: 1em 4em;
+  background: rgb(81, 81, 81);
+  color: #ffff;
+}
+
+.btn-addto-bag:hover {
+  cursor: pointer;
 }

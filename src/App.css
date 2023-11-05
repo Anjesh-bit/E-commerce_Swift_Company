@@ -12,3 +12,13 @@ body {
   font-family: "Poppins";
   letter-spacing: 2px;
 }
+
+.app__loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app__loader h2 {
+  margin-bottom: 2em;
+}

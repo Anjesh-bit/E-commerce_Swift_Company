@@ -22,10 +22,10 @@ import {
 const getAllProductsReducer = (state = {}, action) => {
   switch (action.type) {
     case ON_FETCH_START_PRODUCT:
-      return { ...state, loading: false };
+      return { ...state, loading: true };
 
     case ON_FETCH_START_SUCCESS:
-      return { ...state, allProducts: action.payload, loading: true };
+      return { ...state, allProducts: action.payload, loading: false };
 
     case ON_FETCH_START_FAILED:
       return { ...state, loading: false, allProducts: "" };
@@ -59,10 +59,10 @@ const getAllProductsReducer = (state = {}, action) => {
 const getSingleProductReducer = (state = {}, action) => {
   switch (action.type) {
     case ON_FETCH_START_SINGLE_PRODUCT:
-      return { ...state, loading: false };
+      return { ...state, loading: true };
 
     case ON_FETCH_START_SINGLE_SUCCESS:
-      return { ...state, singleProduct: action.payload, loading: true };
+      return { ...state, singleProduct: action.payload, loading: false };
 
     case ON_FETCH_START_SINGLE_FAILED:
       return { ...state, loading: false, singleProduct: "" };

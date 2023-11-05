@@ -1,6 +1,10 @@
 const AppButton = (props) => {
-  const { btnClass, btnText } = props;
-  return <button className={btnClass}>{btnText}</button>;
+  const { btnClass, btnText, onClick } = props;
+  return (
+    <button className={btnClass} onClick={onClick}>
+      {btnText}
+    </button>
+  );
 };
 
 export default AppButton;

@@ -1,5 +1,6 @@
 import AppButton from "../../common/Button/AppButton";
 import "./Content.css";
+import { Link } from "react-router-dom";
 
 const Content = () => {
   return (
@@ -13,7 +14,9 @@ const Content = () => {
         </h1>
       </div>
       <div className="shop-btn-wrapper">
-        <AppButton btnClass="shop-btn" btnText="Shop Now" />
+        <Link to="/shop">
+          <AppButton btnClass="shop-btn" btnText="Shop Now" />
+        </Link>
       </div>
     </div>
   );

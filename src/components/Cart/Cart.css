@@ -1,0 +1,30 @@
+.app__cart-main {
+  padding: 2em 10em;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2em;
+}
+
+.cart-container {
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  box-shadow: rgb(68, 67, 67) 0px 1px 3px 0px,
+    rgba(68, 67, 67, 0.95) 0px 0px 0px 1px;
+}
+
+.cart-image-container {
+  height: 15em;
+}
+
+.cart-image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}

@@ -1,15 +1,15 @@
-import About from "../../components/About/About";
+import ShoppingBag from "../../components/Cart/Cart";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 
-const AboutPage = () => {
+const ShoppingBagPage = () => {
   return (
     <div>
       <Header />
-      <About />
+      <ShoppingBag />
       <Footer />
     </div>
   );
 };
 
-export default AboutPage;
+export default ShoppingBagPage;
