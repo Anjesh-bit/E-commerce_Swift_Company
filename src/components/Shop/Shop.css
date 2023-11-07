@@ -30,14 +30,26 @@
   padding: 1em;
 }
 
+.shop-description > span {
+  font-size: 2em;
+  font-weight: 900;
+}
+
+.shop-description > h1 {
+  font-size: 1.25em;
+  font-weight: 200;
+}
+
 .shop-description h4:not(:last-child) {
   padding-bottom: 1em;
 }
 
 .shop-now-btn {
-  padding: 1em 4em;
+  padding: 0.5em 4em;
   background: transparent;
   border: 1px solid rgb(68, 67, 67);
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
 .shop-now-btn:hover {

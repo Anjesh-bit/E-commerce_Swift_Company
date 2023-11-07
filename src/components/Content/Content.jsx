@@ -6,12 +6,10 @@ const Content = () => {
   return (
     <div className="app___content-wrapper">
       <div className="content-text">
-        <h4>
-          <span>Your home is as unique as you are</span>
-        </h4>
-        <h1>
-          <span>Brightening homes with beautiful, durable products.</span>
-        </h1>
+        <div className="sm-text">Your products is as unique as you are</div>
+        <div className="lg-text">
+          Brightening with beautiful, durable products.
+        </div>
       </div>
       <div className="shop-btn-wrapper">
         <Link to="/shop">

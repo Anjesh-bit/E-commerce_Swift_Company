@@ -41,11 +41,11 @@ const Shop = () => {
                 />
               </div>
               <div className="shop-description">
-                <h4>{products.title}</h4>
-                <h1>{`$${products.price}`}</h1>
+                <h1>{products.title}</h1>
+                <span>{`$${products.price}`}</span>
               </div>
               <Link to={`/shop/${products.id}`}>
-                <AppButton btnText="Shop Now" btnClass="shop-now-btn" />
+                <AppButton btnText="Shop now" btnClass="shop-now-btn" />
               </Link>
             </div>
           ))}

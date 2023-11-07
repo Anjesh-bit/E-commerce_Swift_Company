@@ -1,5 +1,6 @@
 .app__cart-main {
   padding: 2em 10em;
+  text-align: center;
 }
 
 .grid-container {
@@ -27,4 +28,31 @@
   width: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+.inc-dec-counter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-btn {
+  padding: 0.2em 1em;
+  font-size: 1.2em;
+  outline: none;
+  border: none;
+  background: rgb(81, 81, 81);
+  color: #ffff;
+  border-radius: 5px;
+}
+
+.cart-btn:hover {
+  cursor: pointer;
+}
+
+.count-value {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  color: rgb(81, 81, 81);
 }

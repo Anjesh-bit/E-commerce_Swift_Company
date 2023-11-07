@@ -1,8 +1,18 @@
 .app___detailed-wrapper {
+  padding: 5em 10em;
+}
+
+.detailed-inner-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2em 10em;
+  column-gap: 2em;
+}
+
+.products {
+  flex: 2 1 0%;
+}
+
+.products-description {
+  flex: 1 1 0%;
 }
 
 .detailed-inner-wrapper .detailed-title h1 {
@@ -11,6 +21,55 @@
 
 .detailed-inner-wrapper .detailed-title h4 {
   font-size: 0.9em;
+}
+
+.detailed-title {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  text-align: center;
+  margin-bottom: 5em;
+}
+
+.detailed-title > h4 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.price {
+  font-size: 2em;
+  font-weight: 100;
+}
+
+.total_price {
+  font-weight: 600;
+}
+
+.description > p {
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.description > span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+.total_price > span {
+  font-weight: 100;
+}
+
+.detailed-title > div {
+  font-size: 4em;
+  font-weight: 400;
+}
+
+.items-cart > span {
+  display: block;
+  margin-bottom: 0.3em;
+  font-weight: 600;
 }
 
 .slider-detailed-wrapper {
@@ -27,14 +86,24 @@
   width: 100%;
   object-fit: cover;
   object-position: top;
+  padding-bottom: 1em;
 }
 
 .btn-addto-bag {
-  padding: 1em 4em;
+  padding: 0.5em 4.5em;
   background: rgb(81, 81, 81);
   color: #ffff;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 2px;
 }
 
 .btn-addto-bag:hover {
   cursor: pointer;
+}
+
+.products-description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
 }

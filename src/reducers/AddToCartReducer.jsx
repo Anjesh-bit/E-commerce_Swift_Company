@@ -1,20 +1,21 @@
 import {
   ON_FAILED_ADD_CART,
-  ON_FAILED_ADD_CART_COUNT,
   ON_START_ADD_CART,
-  ON_START_ADD_CART_COUNT,
 } from "../constants/AddToCartConstants";
 
-const addToCartReducer = (state, action) => {
+const addToCartReducer = (state = { countCart: 0 }, action) => {
   switch (action.type) {
     case ON_START_ADD_CART:
       return {
         ...state,
-        loading: true,
+        isSuccess: true,
+        countCart: action?.payload?.countCart,
         cartData: [...state.cartData, action.payload],
       };
+
     case ON_FAILED_ADD_CART:
-      return { ...state, error: action.payload, loading: false };
+      return { ...state, error: action.payload, isSuccess: false };
+
     default:
       return { ...state };
   }
