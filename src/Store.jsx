@@ -6,6 +6,7 @@ import {
 } from "./reducers/GetAllProductsReducer";
 import { addToCartReducer } from "./reducers/AddToCartReducer";
 import { getLocalStorage } from "./utils/LocalStorage";
+
 //combine all the reducres at once
 const reducers = combineReducers({
   productsReducer: getAllProductsReducer,
@@ -14,20 +15,19 @@ const reducers = combineReducers({
 });
 
 const getDataLocalStorage = () => {
-  let dataLocalStorage = null;
-  if (getLocalStorage("allcartItems")) {
-    dataLocalStorage = JSON?.parse(getLocalStorage("allcartItems"));
-  } else if (getLocalStorage("cart")) {
-    dataLocalStorage = JSON?.parse(getLocalStorage("cart"));
+  let dataLocalStorage = [];
+
+  if (getLocalStorage("cart")) {
+    dataLocalStorage = getLocalStorage("cart");
   }
-  return dataLocalStorage || null;
+  return dataLocalStorage || [];
 };
 
 // initial state for the Store when component mounts
 const initialState = {
   productsReducer: { loading: true, allProducts: "" },
   singleProduct: { loading: true, singleProduct: "" },
-  cartData: { cartData: getDataLocalStorage(), countCart: 0 },
+  cartData: { cartData: getDataLocalStorage() },
 };
 
 //middleware thunk for decreasing side effects and returning the action creators as a function instead of plain js object

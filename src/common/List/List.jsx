@@ -1,7 +1,19 @@
+import { useSelector } from "react-redux";
 import "./List.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const List = (props) => {
+  const { cartData } = useSelector((state) => state.cartData);
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    const totalCountQty = cartData?.reduce((acc, curr) => {
+      return acc + curr.quantity;
+    }, 0);
+    setTotalCount(totalCountQty);
+  }, [cartData, totalCount]);
+
   return (
     <div className="app___list-wrapper">
       <div className="list-inner-wrapper">
@@ -24,7 +36,8 @@ const List = (props) => {
           </li>
           <li>
             <Link to="/shopping-bag" style={props.linkStyles}>
-              {props.shoppingBag}
+              {`${props.shoppingBag} `}
+              <span>({`${totalCount}`})</span>
             </Link>
           </li>
         </ul>

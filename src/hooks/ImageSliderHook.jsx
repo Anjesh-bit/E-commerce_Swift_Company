@@ -12,7 +12,7 @@ const useImageSlider = (initValue, products, filter) => {
   };
 
   const onHandlePrev = () => {
-    if (index >= 0) {
+    if (index > 0) {
       setIndex(index - 1);
     } else {
       setIndex(products.length - 1);

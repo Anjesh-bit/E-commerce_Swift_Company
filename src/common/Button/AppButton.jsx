@@ -1,7 +1,7 @@
 const AppButton = (props) => {
-  const { btnClass, btnText, onClick } = props;
+  const { btnClass, btnText, onClick, disabled } = props;
   return (
-    <button className={btnClass} onClick={onClick}>
+    <button className={btnClass} onClick={onClick} disabled={disabled}>
       {btnText}
     </button>
   );

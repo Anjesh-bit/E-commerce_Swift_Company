@@ -1,4 +1,4 @@
-import footerData from "../../data/Data";
+import { footerData } from "../../data/Data";
 import "./Footer.css";
 
 const Footer = () => {

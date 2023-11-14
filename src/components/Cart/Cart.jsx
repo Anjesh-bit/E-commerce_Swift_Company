@@ -1,38 +1,40 @@
 // ShoppingBag.js
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import "./Cart.css";
 import NoData from "../../common/NoData/NoData";
-import { getLocalStorage, setLocalStorage } from "../../utils/LocalStorage";
-import AppButton from "../../common/Button/AppButton";
+import { setLocalStorage } from "../../utils/LocalStorage";
 import useCount from "../../hooks/MultipleCountHook";
+import CartItems from "./CartItems";
 
 const ShoppingBag = () => {
   const { cartData } = useSelector((state) => state?.cartData);
+  const [product, setProduct] = useState([{}]);
 
-  //remove the duplicate keys
+  /*remove the duplicate keys if
+   any though not necessary cause 
+   we have found by id using reducer
+   p.s just for demonstration
+   */
+
   const filteredData = useMemo(() => {
     const uniqueKeys = new Set();
     return cartData?.filter((item) => {
-      if (!uniqueKeys.has(item.key)) {
-        uniqueKeys.add(item.key);
+      if (!uniqueKeys.has(item.id)) {
+        uniqueKeys.add(item.id);
         return true;
       }
       return false;
     });
   }, [cartData]);
 
-  const [cartItemsUpdate, setCartItemsUpdate] = useState(
-    JSON.parse(getLocalStorage("cart")) || []
-  );
-
   const removeFromCart = useCallback(
     (index) => {
-      filteredData?.splice(index, 1);
-      setLocalStorage("cart", filteredData);
-      setCartItemsUpdate(JSON.parse(getLocalStorage("cart")));
+      const updatedData = [...cartData];
+      updatedData.splice(index, 1);
+      setLocalStorage("cart", updatedData);
     },
-    [filteredData]
+    [cartData]
   );
 
   /* 
@@ -44,54 +46,72 @@ const ShoppingBag = () => {
   i.e 1 if counts[0] is inc by 1 
   and so on.
   p.s- counts contains array of 
-  incremented value with same length as cardData
+  incremented value with the same length as cardData
   */
 
-  const { counts, handleCountInc, handleCountDec } = useCount(
-    cartData?.map(() => 0),
+  const { handleCountInc, handleCountDec } = useCount(
+    cartData?.map((items) => items.quantity),
     removeFromCart
   );
 
+  const allProductHandle = useCallback((product) => {
+    setProduct(product);
+  }, []);
+
+  const totalQty = useMemo(() => {
+    const calculateTotal = (cartItem, products) => {
+      const data = cartItem?.reduce((acc, cartItem) => {
+        const isMatch = products?.find(
+          (product) => product.id.toString() === cartItem.id
+        );
+
+        let totalPrice = isMatch?.price * cartItem?.quantity;
+
+        if (isMatch) {
+          const discount = isMatch?.discountPercentage || 0;
+          totalPrice -= discount;
+        }
+        acc += totalPrice;
+        return acc;
+      }, 0);
+      return data;
+    };
+
+    const cartItemIds = cartData?.map((item) => item.id);
+    const allData = product?.data?.products?.filter((items) => {
+      return cartItemIds?.includes(items.id.toString());
+    });
+
+    return calculateTotal(cartData, allData);
+  }, [cartData, product]);
+
+  const renderTotalQty = isNaN(totalQty) ? "N/A" : Math.ceil(totalQty);
+
   useEffect(() => {
-    setLocalStorage("allcartItems", cartData);
     setLocalStorage("cart", filteredData);
-    setCartItemsUpdate(JSON.parse(getLocalStorage("cart")) || []);
-  }, [filteredData, cartData]);
+  }, [filteredData]);
 
   return (
     <>
-      {cartItemsUpdate ? (
+      {filteredData.length > 0 ? (
         <div className="app__cart-main">
           <div className="grid-container">
-            {cartItemsUpdate?.map((cartItem, index) => (
-              <div className="cart-container" key={`key${index}`}>
-                <div className="cart-title">
-                  <h1>{cartItem?.title}</h1>
-                </div>
-                <div className="cart-price">
-                  Total Price : $
-                  {counts[index] >= 0 ? cartItem.price * counts[index] : 0}
-                </div>
-                <div className="cart-image-container">
-                  <img src={cartItem?.image} alt="iPhone" />
-                </div>
-                <div className="inc-dec-counter">
-                  <AppButton
-                    btnText="+"
-                    btnClass="cart-btn margin"
-                    onClick={() => handleCountInc(index)}
-                  />
-                  <div className="count-value">
-                    <span>{counts[index]}</span>
-                  </div>
-                  <AppButton
-                    btnText="-"
-                    btnClass="cart-btn"
-                    onClick={() => handleCountDec(index)}
-                  />
-                </div>
-              </div>
+            {filteredData?.map((items, index) => (
+              <CartItems
+                allProducts={allProductHandle}
+                key={items?.id}
+                {...items}
+                onHandleCountInc={() =>
+                  handleCountInc(index, cartData[index]?.id)
+                }
+                onHandleCountDec={() =>
+                  handleCountDec(index, cartData[index]?.id)
+                }
+              />
             ))}
+          </div>
+          <div className="totalQty">
+            Total Price : $ <span>{renderTotalQty}</span>
           </div>
         </div>
       ) : (

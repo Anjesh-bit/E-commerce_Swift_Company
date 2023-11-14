@@ -1,3 +1,6 @@
+import ArrowRight from "../assets/arrow-right.png";
+import ArrowLeft from "../assets/left-arrow.png";
+
 const footerData = [
   {
     header: "Our Address",
@@ -34,4 +37,6 @@ const footerData = [
   },
 ];
 
-export default footerData;
+const IconList = { ArrowLeft, ArrowRight };
+
+export { footerData, IconList };

@@ -1,6 +1,9 @@
 .app__cart-main {
   padding: 2em 10em;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
 }
 
 .grid-container {
@@ -55,4 +58,19 @@
   align-items: center;
   font-size: 1.2em;
   color: rgb(81, 81, 81);
+}
+
+.totalQty {
+  background: rgb(81, 81, 81);
+  width: fit-content;
+  margin: auto;
+  font-weight: 600;
+  font-size: 1em;
+  color: #ffff;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+.totalQty span {
+  font-weight: 100;
 }
