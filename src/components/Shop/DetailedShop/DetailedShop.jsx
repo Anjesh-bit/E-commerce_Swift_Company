@@ -11,7 +11,7 @@ import { addTocardAction } from "../../../actions/CartActions";
 import useCount from "../../../hooks/CountHook";
 import { getLocalStorage, setLocalStorage } from "../../../utils/LocalStorage";
 import useTotalPrice from "../../../hooks/TotalPrice";
-import { IconList } from "../../../data/Data";
+import { iconList } from "../../../data/Data";
 
 const DetailedShop = () => {
   //get the id from the params if we want to get query params the useSearchParams() hooks can be used
@@ -109,7 +109,7 @@ const DetailedShop = () => {
                                 onClick={onHandlePrev}
                               >
                                 <img
-                                  src={IconList.ArrowLeft}
+                                  src={iconList.ArrowLeft}
                                   alt="arrowRight"
                                 />
                               </div>
@@ -118,7 +118,7 @@ const DetailedShop = () => {
                                 onClick={onHandleNext}
                               >
                                 <img
-                                  src={IconList.ArrowRight}
+                                  src={iconList.ArrowRight}
                                   alt="arrowLeft"
                                 />
                               </div>

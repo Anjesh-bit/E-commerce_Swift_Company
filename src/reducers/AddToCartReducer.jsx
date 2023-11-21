@@ -3,7 +3,8 @@ import {
   ON_FAILED_ADD_CART_DEC,
   ON_START_ADD_CART,
   ON_START_ADD_CART_DEC,
-  ON_FAILED_ADD_CART_TOTAL_QUANTITY,
+  ON_START_REMOVE_FROM_CART,
+  ON_FAILED_REMOVE_FROM_CART,
 } from "../constants/AddToCartConstants";
 
 const addToCartReducer = (state = { cartData: [{ quantity: 0 }] }, action) => {
@@ -55,8 +56,12 @@ const addToCartReducer = (state = { cartData: [{ quantity: 0 }] }, action) => {
         };
       }
 
-    case ON_FAILED_ADD_CART_TOTAL_QUANTITY:
-      return { ...state, error: action.payload };
+    case ON_START_REMOVE_FROM_CART:
+      return {
+        cartData: state.cartData.filter(
+          (items) => items.id !== action.payload.key
+        ),
+      };
 
     case ON_FAILED_ADD_CART_DEC:
       return { ...state, error: action.payload };

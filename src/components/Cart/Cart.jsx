@@ -99,6 +99,7 @@ const ShoppingBag = () => {
             {filteredData?.map((items, index) => (
               <CartItems
                 allProducts={allProductHandle}
+                cartData={cartData}
                 key={items?.id}
                 {...items}
                 onHandleCountInc={() =>

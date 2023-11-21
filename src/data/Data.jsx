@@ -1,5 +1,6 @@
 import ArrowRight from "../assets/arrow-right.png";
 import ArrowLeft from "../assets/left-arrow.png";
+import Cancel from "../assets/cancel.png";
 
 const footerData = [
   {
@@ -37,6 +38,7 @@ const footerData = [
   },
 ];
 
-const IconList = { ArrowLeft, ArrowRight };
+const iconList = { ArrowLeft, ArrowRight };
 
-export { footerData, IconList };
+export default Cancel;
+export { footerData, iconList };

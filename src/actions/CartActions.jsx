@@ -1,8 +1,10 @@
 import {
   ON_FAILED_ADD_CART,
   ON_FAILED_ADD_CART_DEC,
+  ON_FAILED_REMOVE_FROM_CART,
   ON_START_ADD_CART,
   ON_START_ADD_CART_DEC,
+  ON_START_REMOVE_FROM_CART,
 } from "../constants/AddToCartConstants";
 
 const addTocardAction = (data) => (dispatch) => {
@@ -33,4 +35,18 @@ const decrementQuantityActions = (data) => (dispatch) => {
   }
 };
 
-export { addTocardAction, decrementQuantityActions };
+const removeFromCartActions = (data) => (dispatch) => {
+  try {
+    dispatch({
+      type: ON_START_REMOVE_FROM_CART,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ON_FAILED_REMOVE_FROM_CART,
+      payload: e,
+    });
+  }
+};
+
+export { addTocardAction, decrementQuantityActions, removeFromCartActions };
