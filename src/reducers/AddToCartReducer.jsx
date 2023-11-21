@@ -66,6 +66,9 @@ const addToCartReducer = (state = { cartData: [{ quantity: 0 }] }, action) => {
     case ON_FAILED_ADD_CART_DEC:
       return { ...state, error: action.payload };
 
+    case ON_FAILED_REMOVE_FROM_CART:
+      return { ...state, error: action.payload };
+
     case ON_FAILED_ADD_CART:
       return { ...state, error: action.payload };
 
